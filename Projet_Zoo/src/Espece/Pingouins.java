@@ -12,9 +12,8 @@ import Zoo.Volants;
  */
 public class Pingouins extends Animaux implements Volants,Marins{
 
-	public Pingouins(String name, boolean sexe, double poids, double taille, int age, boolean hungryIndicator,
-			boolean sleepIndicator, boolean healthIndicator) {
-		super(name, sexe, poids, taille, age, hungryIndicator, sleepIndicator, healthIndicator);
+	public Pingouins(String name, boolean sexe, double poids, double taille, int age) {
+		super(name, sexe, poids, taille, age);
 		// TODO Auto-generated constructor stub
 	}
 

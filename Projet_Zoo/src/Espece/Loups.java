@@ -12,9 +12,8 @@ import Zoo.Mammiferes;
  */
 public class Loups extends Animaux implements Mammiferes{
 
-	public Loups(String name, boolean sexe, double poids, double taille, int age, boolean hungryIndicator,
-			boolean sleepIndicator, boolean healthIndicator) {
-		super(name, sexe, poids, taille, age, hungryIndicator, sleepIndicator, healthIndicator);
+	public Loups(String name, boolean sexe, double poids, double taille, int age) {
+		super(name, sexe, poids, taille, age);
 		// TODO Auto-generated constructor stub
 	}
 

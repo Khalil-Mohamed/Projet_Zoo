@@ -7,10 +7,10 @@ package Zoo;
  * @author n19004502
  *
  */
-public class Animaux implements Runnable {
+public abstract class Animaux implements Runnable {
 
 	private String name;
-	private boolean sexe;
+	private boolean sexe; 
 	private double poids;
 	private double taille;
 	private int age;
@@ -18,20 +18,18 @@ public class Animaux implements Runnable {
 	private boolean sleepIndicator;
 	private boolean healthIndicator;
 
-	
-	public Animaux(String name, boolean sexe, double poids, double taille, int age, boolean hungryIndicator,
-			boolean sleepIndicator, boolean healthIndicator) {
+	public Animaux(String name, boolean sexe, double poids, double taille, int age) {
 		super();
 		this.name = name;
 		this.sexe = sexe;
 		this.poids = poids;
 		this.taille = taille;
 		this.age = age;
-		this.hungryIndicator = hungryIndicator;
-		this.sleepIndicator = sleepIndicator;
-		this.healthIndicator = healthIndicator;
+		this.hungryIndicator = false;
+		this.sleepIndicator = false;
+		this.healthIndicator = true;
 	}
-	
+
 	/**
 	 * @return the name
 	 */
@@ -57,7 +55,11 @@ public class Animaux implements Runnable {
 	 * @param sexe the sexe to set
 	 */
 	public void setSexe(boolean sexe) {
-		this.sexe = sexe;
+		if (this.sexe == true || this.sexe == false) {
+			this.sexe = sexe;
+		} else {
+			System.out.println("Erreur lors de la saisie du sexe : valeur incorrect");
+		}
 	}
 
 	/**
@@ -113,7 +115,11 @@ public class Animaux implements Runnable {
 	 * @param hungryIndicator the hungryIndicator to set
 	 */
 	public void setHungryIndicator(boolean hungryIndicator) {
-		this.hungryIndicator = hungryIndicator;
+		if (this.hungryIndicator == true || this.hungryIndicator == false) {
+			this.hungryIndicator = hungryIndicator;
+		} else {
+			System.out.println("Erreur lors de la saisie des valeur");
+		}
 	}
 
 	/**
@@ -127,6 +133,11 @@ public class Animaux implements Runnable {
 	 * @param sleepIndicator the sleepIndicator to set
 	 */
 	public void setSleepIndicator(boolean sleepIndicator) {
+		if (this.sleepIndicator == true || this.sleepIndicator == false) {
+			this.sleepIndicator = sleepIndicator;
+		} else {
+			System.out.println("Erreur lors de la saisie des valeur");
+		}
 		this.sleepIndicator = sleepIndicator;
 	}
 
@@ -147,9 +158,10 @@ public class Animaux implements Runnable {
 	/**
 	 * @param healthIndicator the healthIndicator to set
 	 */
-	public boolean eat() {
-		if (sleepIndicator == false) {
+	public boolean eat(boolean hungryIndicator) {
+		if (this.sleepIndicator == false && this.hungryIndicator == true) {
 			setHungryIndicator(false);
+			System.out.println("Je mange" + name);
 		} else {
 			setHungryIndicator(true);
 		}
@@ -159,45 +171,41 @@ public class Animaux implements Runnable {
 
 	public void sound(boolean hungryIndicator, boolean sleepIndicator, boolean healthIndicator) {
 		if (hungryIndicator == true) {
-			System.out.println("faim" + name);
+			System.out.println("faim " + name);
 		}
 		if (sleepIndicator == true) {
-			System.out.println("dormir" + name);
+			System.out.println("dormir " + name);
 		}
 		if (healthIndicator == true) {
-			System.out.println("guÃ©risson" + name);
+			System.out.println("guérisson " + name);
 		}
-		if (healthIndicator == false || sleepIndicator == false || hungryIndicator == false) {
+		if (healthIndicator == false && sleepIndicator == false && hungryIndicator == false) {
 			System.out.println(name);
 		}
 	}
 
-	public void beHealed() {
-		if (healthIndicator == false) {
-			setHealthIndicator(true);
+	public void beHealed(boolean healthIndicator) {
+		if (this.healthIndicator == false) {
+			this.healthIndicator = true;
+			System.out.println("Je suis guérri :" + this.healthIndicator);
 		}
 	}
 
-	public void sleepState() {
-		try {
-			if (sleepIndicator == true) {
-				System.out.println(" dodo : " + name);
-				Thread.sleep(200);
-				setSleepIndicator(false);
-			} else {
-				System.out.println(" reveiller : " + name);
-				Thread.sleep(200);
-				setSleepIndicator(true);
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	public void sleepState(boolean sleepIndicator) {
+		if (this.sleepIndicator == true) {
+			this.sleepIndicator = false;
+			System.out.println( name + "va s'endormir : " + this.sleepIndicator);
+		} else {
+			this.sleepIndicator = true;
+			System.out.println( name + "est en train de se reveiller : " + this.sleepIndicator);
 		}
+
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		sleepState();
+		//sleepState();
 	}
 
 	@Override

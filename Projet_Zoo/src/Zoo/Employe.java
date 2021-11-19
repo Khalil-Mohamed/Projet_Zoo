@@ -3,6 +3,8 @@
  */
 package Zoo;
 
+import Enclos.Enclos;
+
 /**
  * @author n19004502
  *
@@ -55,7 +57,6 @@ public class Employe {
 		this.age = age;
 	}
 
-	
 	public void analyseEnclos() {
 		Enclos enclos = new Enclos();
 		System.out.println(enclos);

@@ -11,9 +11,8 @@ import Zoo.Volants;
  */
 public class Aigles extends Animaux implements Volants{
 
-	public Aigles(String name, boolean sexe, double poids, double taille, int age, boolean hungryIndicator,
-			boolean sleepIndicator, boolean healthIndicator) {
-		super(name, sexe, poids, taille, age, hungryIndicator, sleepIndicator, healthIndicator);
+	public Aigles(String name, boolean sexe, double poids, double taille, int age) {
+		super(name, sexe, poids, taille, age);
 		// TODO Auto-generated constructor stub
 	}
 
